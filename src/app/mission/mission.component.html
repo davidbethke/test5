@@ -1,1 +1,22 @@
 <p>mission works!</p>
+<form (ngSubmit)="onSubmit()">
+    <label for="name">Name: </label>
+    <input id="name" type="text" [formControl]="name">
+    <label for="password">Password: </label>
+    <input id="password" type="password" [formControl]="password">
+    <p>Complete the form to enable button.</p>
+    <button type="submit">Submit</button>
+</form>
+<form (ngSubmit)="onSubmit2()">
+<button type="submit">Get Missions</button>
+</form>"
+<p> {{name.value}}: {{password.value}}</p>
+<p> {{ hello}}</p>
+<p> Status: {{ status }} </p>
+<ul>
+	<li *ngFor="let m of missions">
+		Mission Name:{{m.name}}
+		Mission Value:{{m.value}}
+	</li>
+	<p> Missions:{{missions}}</p>
+</ul>
