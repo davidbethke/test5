@@ -75,8 +75,7 @@ export class MissionComponent {
     CapacitorHttp.post(options).then((response)=> {
       console.log(response);
       this.missions= JSON.parse(response.data['result']);
-      this.datasource.data = this.datasource.data;
-      //this.datasource=new MatTableDataSource(this.missions);
+      this.datasource=new MatTableDataSource(this.missions);
     }
     );
   }
