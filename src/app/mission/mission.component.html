@@ -1,22 +1,39 @@
-<p>mission works!</p>
 <form (ngSubmit)="onSubmit()">
-    <label for="name">Name: </label>
-    <input id="name" type="text" [formControl]="name">
-    <label for="password">Password: </label>
-    <input id="password" type="password" [formControl]="password">
+	<mat-form-field>
+    		<mat-label for="name">Name </mat-label>
+    		<input matInput id="name" type="text" [formControl]="name">
+	</mat-form-field>
+	<mat-form-field>
+    		<label for="password">Password </label>
+    		<input matInput id="password" type="password" [formControl]="password">
+	</mat-form-field>
     <p>Complete the form to enable button.</p>
-    <button type="submit">Submit</button>
+    <button mat-flat-button type="submit">Submit</button>
 </form>
 <form (ngSubmit)="onSubmit2()">
-<button type="submit">Get Missions</button>
-</form>"
+	<button mat-flat-button type="submit">Get Missions</button>
+</form>
 <p> {{name.value}}: {{password.value}}</p>
 <p> {{ hello}}</p>
 <p> Status: {{ status }} </p>
-<ul>
+<!--<ul>
 	<li *ngFor="let m of missions">
 		Mission Name:{{m.name}}
 		Mission Value:{{m.value}}
 	</li>
 	<p> Missions:{{missions}}</p>
-</ul>
+</ul>-->
+<mat-table  [dataSource]="datasource">
+
+	<ng-container matColumnDef="Name">
+  		<th mat-header-cell *matHeaderCellDef> Name </th>
+  		<td mat-cell *matCellDef="let mission"> {{mission.name}} </td>
+	</ng-container>
+	<ng-container matColumnDef="Value">
+  		<th mat-header-cell *matHeaderCellDef> Value </th>
+  		<td mat-cell *matCellDef="let mission"> {{mission.value}} </td>
+	</ng-container>
+	<tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+	<tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+
+</mat-table>
